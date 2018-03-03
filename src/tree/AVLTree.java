@@ -2,7 +2,7 @@ package tree;
 
 public class AVLTree {
 
-	private Node root;
+	public Node root;
 
 	// util
 	private int getMax(int a, int b) {
@@ -11,7 +11,7 @@ public class AVLTree {
 		return b;
 	}
 
-	private int getBalance(Node node) {
+	public int getBalance(Node node) {
 		if (node == null)
 			return 0;
 		return node.getLeftChild().getHeight() - node.getRightChild().getHeight();
@@ -52,7 +52,7 @@ public class AVLTree {
 	public Node insert(Node node, int data) {
 		// do the normal BST insertion
 		if (node == null)
-			return new Node(data);
+			return (new Node(data));
 		if (data < node.getData())
 			node.setLeftChild(insert(node.getLeftChild(), data));
 		else if (data > node.getData())
@@ -61,6 +61,8 @@ public class AVLTree {
 			return node;
 
 		// update height of this ancestor Node
+		System.out.println(node.getHeight());
+		System.out.println(node.getRightChild().getHeight());
 		node.setHeight(1 + getMax(node.getLeftChild().getHeight(), node.getRightChild().getHeight()));
 
 		// LL rotation

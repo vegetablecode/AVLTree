@@ -7,18 +7,9 @@ public class Node {
 	private Node leftChild;
 	private Node rightChild;
 	
-	public Node() {
-		this.data = 0;
-		this.height = 1;
-		this.leftChild = null;
-		this.rightChild = null;
-	}
-	
 	public Node(int data) {
 		this.data = data;
 		this.height = 1;
-		this.leftChild = null;
-		this.rightChild = null;
 	}
 	
 	public void setData(int data) {
