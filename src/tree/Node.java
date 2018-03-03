@@ -53,10 +53,4 @@ public class Node {
 		return height;
 	}
 	
-	public int getBalance(Node node) {
-		if(node == null)
-			return 0;
-		return node.getLeftChild().getHeight() - node.getRightChild().getHeight();
-	}
-	
 }
