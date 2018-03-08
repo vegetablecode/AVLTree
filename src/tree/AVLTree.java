@@ -6,15 +6,20 @@ public class AVLTree {
 
 	// util
 	private int getMax(int a, int b) {
-		if (a > b)
-			return a;
-		return b;
+		return (a>b)? a: b;
 	}
 
-	public int getBalance(Node node) {
-		if (node == null)
+	public int getBalance(Node N) {
+		if (N == null)
 			return 0;
-		return node.getLeftChild().getHeight() - node.getRightChild().getHeight();
+		return getHeight(N.getLeftChild())-getHeight(N.getRightChild());
+	}
+	
+	int getHeight(Node N) {
+		if(N == null) {
+			return 0;
+		}
+		return N.getHeight();
 	}
 
 	private Node rightRotate(Node y) {
@@ -26,8 +31,10 @@ public class AVLTree {
 		y.setLeftChild(T2);
 
 		// update heights
-		y.setHeight(getMax(y.getLeftChild().getHeight(), y.getRightChild().getHeight()) + 1);
-		x.setHeight(getMax(x.getLeftChild().getHeight(), x.getRightChild().getHeight()) + 1);
+		int yHeight = getMax(getHeight(y.getLeftChild()), getHeight(y.getRightChild())) + 11;
+		int xHeight = getMax(getHeight(x.getLeftChild()), getHeight(x.getRightChild())) + 1;
+		y.setHeight(yHeight);
+		x.setHeight(xHeight);
 
 		// return new root
 		return x;
@@ -42,8 +49,10 @@ public class AVLTree {
 		x.setRightChild(T2);
 
 		// update heights
-		x.setHeight(getMax(x.getLeftChild().getHeight(), x.getRightChild().getHeight()) + 1);
-		y.setHeight(getMax(y.getLeftChild().getHeight(), y.getRightChild().getHeight()) + 1);
+		int xHeight = getMax(getHeight(x.getLeftChild()), getHeight(x.getRightChild())) + 1;
+		int yHeight = getMax(getHeight(y.getLeftChild()), getHeight(y.getRightChild())) + 1;
+		x.setHeight(xHeight);
+		y.setHeight(yHeight);
 
 		// return new root
 		return y;
@@ -61,9 +70,8 @@ public class AVLTree {
 			return node;
 
 		// update height of this ancestor Node
-		System.out.println(node.getHeight());
-		System.out.println(node.getRightChild().getHeight());
-		node.setHeight(1 + getMax(node.getLeftChild().getHeight(), node.getRightChild().getHeight()));
+		int newHeight = 1 + getMax(getHeight(node.getLeftChild()), getHeight(node.getRightChild()));
+		node.setHeight(newHeight);
 
 		// LL rotation
 		if ((getBalance(node) > 1) && (data < node.getLeftChild().getData()))
