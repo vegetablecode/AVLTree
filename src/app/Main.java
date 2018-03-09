@@ -15,7 +15,10 @@ public class Main {
 		tree.root = tree.insert(tree.root, 25);
 		
 		tree.preOrder(tree.root);
-
+		System.out.println(" ");
+		tree.inOrder(tree.root);
+		System.out.println(" ");
+		tree.postOrder(tree.root);
 	}
 
 }
