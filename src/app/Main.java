@@ -1,23 +1,10 @@
 package app;
 
 import tree.AVLTree;
-import tree.Node;
-import view.TreePrinter;
+import view.Printer;
+
 
 public class Main {
-
-	private static Node test1() {
-		AVLTree tree = new AVLTree();
-		
-		tree.root = tree.insert(tree.root, 10);
-		tree.root = tree.insert(tree.root, 20);
-		tree.root = tree.insert(tree.root, 30);
-		tree.root = tree.insert(tree.root, 40);
-		tree.root = tree.insert(tree.root, 50);
-		tree.root = tree.insert(tree.root, 25);
-
-        return tree.root;
-    }
 
     public static void main(String[] args) {
 
@@ -29,15 +16,21 @@ public class Main {
     		tree.root = tree.insert(tree.root, 50);
     		tree.root = tree.insert(tree.root, 25);
     		
-    		tree.preOrder(tree.root);
+    		Printer treePrinter = new Printer(tree);
+    		treePrinter.updateView();
+    		
+    		
+    		System.out.println(treePrinter.getInOrder());
 		System.out.println(" ");
-		tree.inOrder(tree.root);
+		System.out.println(treePrinter.getPreOrder());
 		System.out.println(" ");
-		tree.postOrder(tree.root);
+		System.out.println(treePrinter.getPostOrder());
 		System.out.println(" ");
 		
-        TreePrinter.printNode(test1());
 
+        System.out.println(" ");
+        System.out.println(treePrinter.getGraphTree());
+        
     }
     
 }

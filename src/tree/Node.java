@@ -44,4 +44,21 @@ public class Node {
 		return height;
 	}
 	
+	// -------- printer (adapted from: https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram) -------- //
+	public StringBuilder toString(StringBuilder prefix, boolean isTail, StringBuilder sb) {
+	    if(rightChild!=null) {
+	        rightChild.toString(new StringBuilder().append(prefix).append(isTail ? "│   " : "    "), false, sb);
+	    }
+	    sb.append(prefix).append(isTail ? "└── " : "┌── ").append(data).append("\n");
+	    if(leftChild!=null) {
+	        leftChild.toString(new StringBuilder().append(prefix).append(isTail ? "    " : "│   "), true, sb);
+	    }
+	    return sb;
+	}
+
+	@Override
+	public String toString() {
+	    return this.toString(new StringBuilder(), true, new StringBuilder()).toString();
+	}
+	// ----------------------------------------------------------------------------------------------------------------------- //
 }

@@ -95,29 +95,5 @@ public class AVLTree {
 
 		return node;
 	}
-
-	public void preOrder(Node node) {
-		if(node != null) {
-			System.out.print(node.getData() + " ");
-			preOrder(node.getLeftChild());
-			preOrder(node.getRightChild());
-		}
-	}
-	
-	public void inOrder(Node node) {
-		if(node != null) {
-			inOrder(node.getLeftChild());
-			System.out.print(node.getData() + " ");
-			inOrder(node.getRightChild());
-		}
-	}
-	
-	public void postOrder(Node node) {
-		if(node != null) {
-			postOrder(node.getLeftChild());
-			postOrder(node.getRightChild());
-			System.out.print(node.getData() + " ");
-		}
-	}
 	
 }
