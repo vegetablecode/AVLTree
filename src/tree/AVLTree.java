@@ -50,6 +50,8 @@ public class AVLTree {
 		// update heights
 		int xHeight = getMax(getHeight(x.getLeftChild()), getHeight(x.getRightChild())) + 1;
 		int yHeight = getMax(getHeight(y.getLeftChild()), getHeight(y.getRightChild())) + 1;
+		System.out.println("yL: " + getHeight(y.getLeftChild()) + " yR: " + getHeight(y.getRightChild()));
+		System.out.println("xH: " + xHeight + " yH: " + yHeight);
 		x.setHeight(xHeight);
 		y.setHeight(yHeight);
 
@@ -70,30 +72,40 @@ public class AVLTree {
 
 		// update height of this ancestor Node
 		int newHeight = 1 + getMax(getHeight(node.getLeftChild()), getHeight(node.getRightChild()));
+		System.out.println("NEW HEIGHT: " + newHeight);
 		node.setHeight(newHeight);
 
 		int balance = getBalance(node);
 		
+		System.out.println("DATA: " + data);
+		System.out.println("BALANCE: " + balance);
+		
 		// LL rotation
-		if ((balance > 1) && (data < node.getLeftChild().getData()))
+		if ((balance > 1) && (data < node.getLeftChild().getData())) {
+			System.out.println("LL");
 			return rightRotate(node);
+		}
 
 		// RR rotation
-		if ((balance < -1) && (data > node.getRightChild().getData()))
+		if ((balance < -1) && (data > node.getRightChild().getData())) {
+			System.out.println("RR");
 			return leftRotate(node);
+		}
 
 		// LR rotation
 		if ((balance > 1) && (data > node.getLeftChild().getData())) {
+			System.out.println("LR");
 			node.setLeftChild(leftRotate(node.getLeftChild()));
 			return rightRotate(node);
 		}
 
 		// RL rotation
 		if ((balance < -1) && (data < node.getRightChild().getData())) {
+			System.out.println("RL");
 			node.setRightChild(rightRotate(node.getRightChild()));
 			return leftRotate(node);
 		}
-
+		System.out.println(" ");
 		return node;
 	}
 	

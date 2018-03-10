@@ -33,6 +33,12 @@ public class MainController {
 		// create instance of a tree and printer
 		tree = new AVLTree();
 		tree.root = tree.insert(tree.root, 1);
+		tree.root = tree.insert(tree.root, 2);
+		tree.root = tree.insert(tree.root, 3);
+		//tree.root = tree.insert(tree.root, 4);
+		//tree.root = tree.insert(tree.root, 5);
+		//tree.root = tree.insert(tree.root, 6);
+		//tree.root = tree.insert(tree.root, 7);
 		treePrinter = new Printer(tree);
 		
 		update();
