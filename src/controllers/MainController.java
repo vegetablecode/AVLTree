@@ -1,6 +1,8 @@
 package controllers;
 
 
+import java.util.Random;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -30,7 +32,7 @@ public class MainController {
 	void initialize() {
 		// create instance of a tree and printer
 		tree = new AVLTree();
-		tree.root = tree.insert(tree.root, 0);
+		tree.root = tree.insert(tree.root, 1);
 		treePrinter = new Printer(tree);
 		
 		update();
@@ -58,8 +60,15 @@ public class MainController {
 	}
 	
 	@FXML
-	public void readSampleTree() {
-		
+	public void readSampleTree() throws InterruptedException {
+		Random randomGenerator = new Random();
+		int numbOfElements = 5;
+		for(int i=0; i<numbOfElements; i++) {
+			int val = randomGenerator.nextInt(100);
+			System.out.println(val);
+			tree.root = tree.insert(tree.root, val);
+			update();
+		}
 	}
 	
 	@FXML
@@ -70,6 +79,7 @@ public class MainController {
 	}
 	
 	public void update() {
+		inputField.setText("");
 		treePrinter.updateView();
 		graphTextArea.setText(treePrinter.getGraphTree());
 		inOrderField.setText(treePrinter.getInOrder().toString());

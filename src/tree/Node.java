@@ -43,13 +43,13 @@ public class Node {
 	public int getHeight() {
 		return height;
 	}
-	
+		
 	// -------- printer (adapted from: https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram) -------- //
 	public StringBuilder toString(StringBuilder prefix, boolean isTail, StringBuilder sb) {
 	    if(rightChild!=null) {
 	        rightChild.toString(new StringBuilder().append(prefix).append(isTail ? "│       " : "        "), false, sb);
 	    }
-	    sb.append(prefix).append(isTail ? "└── " : "┌── ").append(data).append("\n");
+	    sb.append(prefix).append(isTail ? "└── " : "┌── ").append(data).append(":").append(getBalance(this)).append("\n");
 	    if(leftChild!=null) {
 	        leftChild.toString(new StringBuilder().append(prefix).append(isTail ? "        " : "│       "), true, sb);
 	    }
@@ -60,5 +60,20 @@ public class Node {
 	public String toString() {
 	    return this.toString(new StringBuilder(), true, new StringBuilder()).toString();
 	}
+	
+	// very temp
+		public int getHeight(Node N) {
+			if(N == null) {
+				return 0;
+			}
+			return N.getHeight();
+		}
+		
+		public int getBalance(Node N) {
+			if (N == null)
+				return 0;
+			return getHeight(N.getLeftChild())-getHeight(N.getRightChild());
+		}
+
 	// ----------------------------------------------------------------------------------------------------------------------- //
 }

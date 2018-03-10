@@ -30,7 +30,7 @@ public class AVLTree {
 		y.setLeftChild(T2);
 
 		// update heights
-		int yHeight = getMax(getHeight(y.getLeftChild()), getHeight(y.getRightChild())) + 11;
+		int yHeight = getMax(getHeight(y.getLeftChild()), getHeight(y.getRightChild())) + 1;
 		int xHeight = getMax(getHeight(x.getLeftChild()), getHeight(x.getRightChild())) + 1;
 		y.setHeight(yHeight);
 		x.setHeight(xHeight);
@@ -72,22 +72,24 @@ public class AVLTree {
 		int newHeight = 1 + getMax(getHeight(node.getLeftChild()), getHeight(node.getRightChild()));
 		node.setHeight(newHeight);
 
+		int balance = getBalance(node);
+		
 		// LL rotation
-		if ((getBalance(node) > 1) && (data < node.getLeftChild().getData()))
+		if ((balance > 1) && (data < node.getLeftChild().getData()))
 			return rightRotate(node);
 
 		// RR rotation
-		if ((getBalance(node) < -1) && (data > node.getRightChild().getData()))
+		if ((balance < -1) && (data > node.getRightChild().getData()))
 			return leftRotate(node);
 
 		// LR rotation
-		if ((getBalance(node) > 1) && (data > node.getLeftChild().getData())) {
+		if ((balance > 1) && (data > node.getLeftChild().getData())) {
 			node.setLeftChild(leftRotate(node.getLeftChild()));
 			return rightRotate(node);
 		}
 
 		// RL rotation
-		if ((getBalance(node) < -1) && (data < node.getRightChild().getData())) {
+		if ((balance < -1) && (data < node.getRightChild().getData())) {
 			node.setRightChild(rightRotate(node.getRightChild()));
 			return leftRotate(node);
 		}
