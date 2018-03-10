@@ -4,8 +4,7 @@ public class AVLTree {
 
 	public Node root;
 
-	// util
-	private int getMax(int a, int b) {
+	public int getMax(int a, int b) {
 		return (a>b)? a: b;
 	}
 
@@ -15,7 +14,7 @@ public class AVLTree {
 		return getHeight(N.getLeftChild())-getHeight(N.getRightChild());
 	}
 	
-	int getHeight(Node N) {
+	public int getHeight(Node N) {
 		if(N == null) {
 			return 0;
 		}

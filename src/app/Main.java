@@ -1,36 +1,31 @@
 package app;
 
-import tree.AVLTree;
-import view.Printer;
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
-public class Main {
+public class Main extends Application {
 
-    public static void main(String[] args) {
-
-    		AVLTree tree = new AVLTree();
-    		tree.root = tree.insert(tree.root, 10);
-    		tree.root = tree.insert(tree.root, 20);
-    		tree.root = tree.insert(tree.root, 30);
-    		tree.root = tree.insert(tree.root, 40);
-    		tree.root = tree.insert(tree.root, 50);
-    		tree.root = tree.insert(tree.root, 25);
-    		
-    		Printer treePrinter = new Printer(tree);
-    		treePrinter.updateView();
-    		
-    		
-    		System.out.println(treePrinter.getInOrder());
-		System.out.println(" ");
-		System.out.println(treePrinter.getPreOrder());
-		System.out.println(" ");
-		System.out.println(treePrinter.getPostOrder());
-		System.out.println(" ");
-		
-
-        System.out.println(" ");
-        System.out.println(treePrinter.getGraphTree());
-        
+    public static void main(String[] args) throws IOException{
+        launch(args);
     }
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/MainWindow.fxml"));
+		
+		Pane pane = loader.load();
+		Scene scene = new Scene(pane, 800, 600);
+		
+		primaryStage.setResizable(false);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("AVL Tree");
+		primaryStage.show();
+	}
     
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+   <children>
+      <Label layoutX="14.0" layoutY="479.0" prefHeight="17.0" prefWidth="55.0" text="inOrder:" />
+      <Label layoutX="14.0" layoutY="516.0" prefHeight="17.0" prefWidth="66.0" text="preOrder:" />
+      <TextField fx:id="inOrderField" layoutX="95.0" layoutY="474.0" prefHeight="27.0" prefWidth="566.0" />
+      <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="445.0" prefWidth="647.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextArea fx:id="graphTextArea" prefHeight="445.0" prefWidth="647.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Label layoutX="14.0" layoutY="554.0" prefHeight="17.0" prefWidth="73.0" text="postOrder:" />
+      <TextField fx:id="preOrderField" layoutX="95.0" layoutY="511.0" prefHeight="27.0" prefWidth="566.0" />
+      <TextField fx:id="postOrderField" layoutX="95.0" layoutY="549.0" prefHeight="27.0" prefWidth="566.0" />
+      <Label layoutX="696.0" layoutY="14.0" prefHeight="17.0" prefWidth="73.0" text="Main Menu:" />
+      <Separator layoutX="676.0" layoutY="33.0" prefHeight="1.0" prefWidth="109.0" />
+      <TextField fx:id="inputField" layoutX="719.0" layoutY="60.0" prefHeight="27.0" prefWidth="66.0" />
+      <Label layoutX="675.0" layoutY="65.0" prefHeight="17.0" prefWidth="42.0" text="Value:" />
+      <Button layoutX="678.0" layoutY="105.0" mnemonicParsing="false" onAction="#addNode" prefHeight="27.0" prefWidth="109.0" text="Add Node" />
+      <Button layoutX="678.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeNode" prefHeight="27.0" prefWidth="109.0" text="Remove Node" />
+      <Separator layoutX="676.0" layoutY="297.0" prefHeight="1.0" prefWidth="109.0" />
+      <Button layoutX="679.0" layoutY="210.0" mnemonicParsing="false" onAction="#readSampleTree" prefHeight="27.0" prefWidth="109.0" text="Sample Tree" />
+      <Button layoutX="679.0" layoutY="244.0" mnemonicParsing="false" onAction="#resetTree" prefHeight="27.0" prefWidth="109.0" text="Reset" />
+   </children>
+</Pane>
