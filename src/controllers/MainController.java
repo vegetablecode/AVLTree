@@ -34,7 +34,7 @@ public class MainController {
 	
 	@FXML
 	void initialize() {
-		// create instance of a tree and printer
+		// - create instance of a tree and printer -
 		tree = new AVLTree();
 		tree.root = tree.insert(tree.root, 1);
 		treePrinter = new Printer(tree);
@@ -63,7 +63,18 @@ public class MainController {
 
 	@FXML
 	public void removeNode() {
-
+		int value = 0;
+		if (inputField.getText().isEmpty()) {
+			showMessage("Cannot remove the node. There is no value entered.");
+		} else {
+			try {
+				value = Integer.parseInt(inputField.getText());
+				tree.root = tree.remove(tree.root, value);
+			} catch (NumberFormatException e) {
+				showMessage("The value should be a type of integer!");
+			}
+		}
+		update();
 	}
 
 	@FXML

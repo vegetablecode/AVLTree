@@ -44,7 +44,8 @@ public class Node {
 		return height;
 	}
 		
-	// -------- printer (adapted from: https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram) -------- //
+	// -------- PRINTER METHODS -------- //
+	// - printer (adapted from: https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram) -
 	public StringBuilder toString(StringBuilder prefix, boolean isTail, StringBuilder sb) {
 	    if(rightChild!=null) {
 	        rightChild.toString(new StringBuilder().append(prefix).append(isTail ? "│       " : "        "), false, sb);
@@ -61,7 +62,7 @@ public class Node {
 	    return this.toString(new StringBuilder(), true, new StringBuilder()).toString();
 	}
 	
-	// very temp
+	// - utilities -
 		public int getHeight(Node N) {
 			if(N == null) {
 				return 0;
@@ -75,5 +76,4 @@ public class Node {
 			return getHeight(N.getLeftChild())-getHeight(N.getRightChild());
 		}
 
-	// ----------------------------------------------------------------------------------------------------------------------- //
 }
