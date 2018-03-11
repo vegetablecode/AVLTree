@@ -4,38 +4,37 @@ public class AVLTree {
 
 	public Node root;
 
-	public int getMax(int a, int b) {
+	// ----- UTILITY METHODS ----- //
+	int getMax(int a, int b) {
 		return (a>b)? a: b;
 	}
 
-	public int getBalance(Node N) {
-		if (N == null)
+	int getBalance(Node node) {
+		if (node == null)
 			return 0;
-		return getHeight(N.getLeftChild())-getHeight(N.getRightChild());
-	}
-	
-	public int getHeight(Node N) {
-		if(N == null) {
-			return 0;
-		}
-		return N.getHeight();
+		return height(node.getLeftChild()) - height(node.getRightChild());
 	}
 
+	int height(Node node) {
+		if (node == null)
+			return 0;
+		return node.getHeight();
+	}
+
+	// ----- ROTATE METHODS ----- //
 	private Node rightRotate(Node y) {
 		Node x = y.getLeftChild();
 		Node T2 = x.getRightChild();
 
-		// rotation
+		// Perform rotation
 		x.setRightChild(y);
 		y.setLeftChild(T2);
 
-		// update heights
-		int yHeight = getMax(getHeight(y.getLeftChild()), getHeight(y.getRightChild())) + 1;
-		int xHeight = getMax(getHeight(x.getLeftChild()), getHeight(x.getRightChild())) + 1;
-		y.setHeight(yHeight);
-		x.setHeight(xHeight);
+		// Update heights
+		y.setHeight((getMax(height(y.getLeftChild()), height(y.getRightChild())) + 1));
+		x.setHeight((getMax(height(x.getLeftChild()), height(x.getRightChild())) + 1));
 
-		// return new root
+		// Return new root
 		return x;
 	}
 
@@ -43,26 +42,24 @@ public class AVLTree {
 		Node y = x.getRightChild();
 		Node T2 = y.getLeftChild();
 
-		// rotation
+		// Perform rotation
 		y.setLeftChild(x);
 		x.setRightChild(T2);
 
-		// update heights
-		int xHeight = getMax(getHeight(x.getLeftChild()), getHeight(x.getRightChild())) + 1;
-		int yHeight = getMax(getHeight(y.getLeftChild()), getHeight(y.getRightChild())) + 1;
-		System.out.println("yL: " + getHeight(y.getLeftChild()) + " yR: " + getHeight(y.getRightChild()));
-		System.out.println("xH: " + xHeight + " yH: " + yHeight);
-		x.setHeight(xHeight);
-		y.setHeight(yHeight);
+		// Update heights
+		x.setHeight((getMax(height(x.getLeftChild()), height(x.getRightChild())) + 1));
+		y.setHeight((getMax(height(y.getLeftChild()), height(y.getRightChild())) + 1));
 
-		// return new root
+		// Return new root
 		return y;
 	}
 
+	// ----- TREE OPERATIONS METHODS ----- //
 	public Node insert(Node node, int data) {
 		// do the normal BST insertion
 		if (node == null)
 			return (new Node(data));
+
 		if (data < node.getData())
 			node.setLeftChild(insert(node.getLeftChild(), data));
 		else if (data > node.getData())
@@ -70,43 +67,32 @@ public class AVLTree {
 		else
 			return node;
 
-		// update height of this ancestor Node
-		int newHeight = 1 + getMax(getHeight(node.getLeftChild()), getHeight(node.getRightChild()));
-		System.out.println("NEW HEIGHT: " + newHeight);
-		node.setHeight(newHeight);
+		// update height of this father's Node
+		node.setHeight((1 + getMax(height(node.getLeftChild()), height(node.getRightChild()))));
 
-		int balance = getBalance(node);
-		
-		System.out.println("DATA: " + data);
-		System.out.println("BALANCE: " + balance);
-		
-		// LL rotation
-		if ((balance > 1) && (data < node.getLeftChild().getData())) {
-			System.out.println("LL");
+
+		// LL rotation case
+		if ((getBalance(node) > 1) && (data < node.getLeftChild().getData())) {
 			return rightRotate(node);
 		}
 
-		// RR rotation
-		if ((balance < -1) && (data > node.getRightChild().getData())) {
-			System.out.println("RR");
+		// RR rotation case
+		if ((getBalance(node) < -1) && (data > node.getRightChild().getData())) {
 			return leftRotate(node);
 		}
 
-		// LR rotation
-		if ((balance > 1) && (data > node.getLeftChild().getData())) {
-			System.out.println("LR");
+		// LR rotation case
+		if ((getBalance(node) > 1) && (data > node.getLeftChild().getData())) {
 			node.setLeftChild(leftRotate(node.getLeftChild()));
 			return rightRotate(node);
 		}
 
-		// RL rotation
-		if ((balance < -1) && (data < node.getRightChild().getData())) {
-			System.out.println("RL");
+		// RL rotation case
+		if ((getBalance(node) < -1) && (data < node.getRightChild().getData())) {
 			node.setRightChild(rightRotate(node.getRightChild()));
 			return leftRotate(node);
 		}
-		System.out.println(" ");
 		return node;
 	}
-	
+
 }
