@@ -26,15 +26,14 @@ public class AVLTree {
 		Node x = y.getLeftChild();
 		Node T2 = x.getRightChild();
 
-		// Perform rotation
+		// make rotation
 		x.setRightChild(y);
 		y.setLeftChild(T2);
 
-		// Update heights
+		// update heights
 		y.setHeight((getMax(height(y.getLeftChild()), height(y.getRightChild())) + 1));
 		x.setHeight((getMax(height(x.getLeftChild()), height(x.getRightChild())) + 1));
 
-		// Return new root
 		return x;
 	}
 
@@ -42,15 +41,14 @@ public class AVLTree {
 		Node y = x.getRightChild();
 		Node T2 = y.getLeftChild();
 
-		// Perform rotation
+		// make rotation
 		y.setLeftChild(x);
 		x.setRightChild(T2);
 
-		// Update heights
+		// update heights
 		x.setHeight((getMax(height(x.getLeftChild()), height(x.getRightChild())) + 1));
 		y.setHeight((getMax(height(y.getLeftChild()), height(y.getRightChild())) + 1));
 
-		// Return new root
 		return y;
 	}
 
