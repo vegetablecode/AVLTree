@@ -47,7 +47,10 @@ public class Printer {
 	}
 	
 	public void setGraphTree(Node node) {
-		graphTree = node.toString();
+		if(node == null)
+			graphTree = "";
+		else
+			graphTree = node.toString();
 	}
 	
 	public void updateView() {

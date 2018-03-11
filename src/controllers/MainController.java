@@ -16,6 +16,7 @@ public class MainController {
 	private AVLTree tree;
 	private Printer treePrinter;
 	private int numbOfRandomNodes;
+	private int treeHeight;
 
 	@FXML
 	private TextArea graphTextArea;
@@ -36,12 +37,13 @@ public class MainController {
 	void initialize() {
 		// - create instance of a tree and printer -
 		tree = new AVLTree();
-		tree.root = tree.insert(tree.root, 1);
 		treePrinter = new Printer(tree);
-
+		
+		// - set default value of random nodes to add -
 		numbOfRandomNodes = 5;
 		randomNodesField.setText(String.valueOf(numbOfRandomNodes));
-
+		
+		// - update view -
 		update();
 	}
 
@@ -107,13 +109,19 @@ public class MainController {
 	}
 
 	public void update() {
+		// - get tree height -
+		if(tree.root == null)
+			treeHeight = 0;
+		else treeHeight = tree.root.getHeight();
+		
+		// - set texts in fields and labels -
 		inputField.setText("");
 		treePrinter.updateView();
 		graphTextArea.setText(treePrinter.getGraphTree());
 		inOrderField.setText(treePrinter.getInOrder().toString());
 		preOrderField.setText(treePrinter.getPreOrder().toString());
 		postOrderField.setText(treePrinter.getPostOrder().toString());
-		treeHeightLabel.setText(String.valueOf(tree.root.getHeight()));
+		treeHeightLabel.setText(String.valueOf(treeHeight));
 	}
 
 	public void showMessage(String message) {
