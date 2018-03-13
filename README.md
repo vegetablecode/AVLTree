@@ -16,3 +16,7 @@ There are four different kinds of rotations:
 ## Operations
 1. Insertion
 2. Deletion
+
+## Screenshots
+![Main Window](/screenshots/1.png)
+![Main Window](/screenshots/2.png)
