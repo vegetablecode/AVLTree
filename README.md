@@ -43,8 +43,13 @@ A          ---->        B         ---->      A   C
 ```
 
 ## Operations
+<<<<<<< HEAD
 #### Insertion
 #### Deletion
+=======
+1. Insertion
+2. Deletion
+>>>>>>> 779a6f0278270d89b2df2e1016021d244bec316a
 
 ## Screenshots
 ![Main Window](/screenshots/1.png)
