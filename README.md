@@ -1,3 +1,4 @@
+
 # AVLTree
 
 ## What is it?
@@ -8,11 +9,43 @@ AVL Tree is a self-balancing binary search tree. It works almost the same as sta
 
 ## Rotations
 There are four different kinds of rotations:
-1. Left Rotation [L]
-2. Right Rotation [R]
-3. Double right-left rotation [RL]
-4. Double left-right rotation [LR]
+#### Left Rotation [L]
+```
+A                           B
+\           L(A)          / \
+ B          ---->        A   C
+  \
+   C
+```
+#### Right Rotation [R]
+```
+   C                       B
+  /         R(C)          / \
+ B          ---->        A   C
+/
+A
+```
+#### Double right-left rotation [RL]
+```
+A                   A                        B
+\       R(B)        \          L(A)        / \
+ C      ---->        B         ---->      A   C
+/                     \
+B                       C
+```
+#### Double left-right rotation [LR]
+```
+ C                       C                    B
+/         L(A)          /        R(C)        / \
+A          ---->        B         ---->      A   C
+\                     /
+ B                   A
+```
 
 ## Operations
-1. Insertion
-2. Deletion
+#### Insertion
+#### Deletion
+
+## Screenshots
+![Main Window](/screenshots/1.png)
+![Main Window](/screenshots/2.png)
