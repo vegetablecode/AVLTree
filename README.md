@@ -12,44 +12,39 @@ There are four different kinds of rotations:
 #### Left Rotation [L]
 ```
 A                           B
-\           L(A)          / \
- B          ---->        A   C
-  \
-   C
+ \           L(A)          / \
+  B          ---->        A   C
+   \
+    C
 ```
 #### Right Rotation [R]
 ```
-   C                       B
-  /         R(C)          / \
- B          ---->        A   C
-/
+    C                       B
+   /         R(C)          / \
+  B          ---->        A   C
+ /
 A
 ```
 #### Double right-left rotation [RL]
 ```
 A                   A                        B
-\       R(B)        \          L(A)        / \
- C      ---->        B         ---->      A   C
-/                     \
+ \       R(B)        \          L(A)        / \
+  C      ---->        B         ---->      A   C
+ /                     \
 B                       C
 ```
 #### Double left-right rotation [LR]
 ```
- C                       C                    B
-/         L(A)          /        R(C)        / \
+  C                       C                    B
+ /         L(A)          /        R(C)        / \
 A          ---->        B         ---->      A   C
-\                     /
- B                   A
+ \                     /
+  B                   A
 ```
 
 ## Operations
-<<<<<<< HEAD
 #### Insertion
 #### Deletion
-=======
-1. Insertion
-2. Deletion
->>>>>>> 779a6f0278270d89b2df2e1016021d244bec316a
 
 ## Screenshots
 ![Main Window](/screenshots/1.png)
